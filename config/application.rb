@@ -1,5 +1,6 @@
 require_relative 'boot'
 
+<<<<<<< HEAD
 require "rails"
 # Pick the frameworks you want:
 require "active_model/railtie"
@@ -11,12 +12,19 @@ require "action_view/railtie"
 require "action_cable/engine"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
+=======
+require 'rails/all'
+>>>>>>> 279db6265040d1a014fe13cc7182155fef431d88
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+<<<<<<< HEAD
 module TestTodos
+=======
+module Blog
+>>>>>>> 279db6265040d1a014fe13cc7182155fef431d88
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
@@ -24,8 +32,11 @@ module TestTodos
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+<<<<<<< HEAD
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+=======
+>>>>>>> 279db6265040d1a014fe13cc7182155fef431d88
   end
 end
