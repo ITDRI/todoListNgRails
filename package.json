@@ -1,10 +1,5 @@
 {
   "name": "testTodos",
-  "scripts": {
-    "start": "node server.js"
-  },
   "private": true,
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+  "dependencies": {}
 }
