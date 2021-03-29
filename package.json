@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "name": "testTodos",
-=======
-  "name": "blog",
->>>>>>> 279db6265040d1a014fe13cc7182155fef431d88
   "private": true,
   "dependencies": {}
 }
