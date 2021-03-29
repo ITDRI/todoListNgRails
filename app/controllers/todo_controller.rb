@@ -13,8 +13,9 @@ class TodoController < ApplicationController
       end
     else
       @todo = Todo.new(todo_params)
-      @todo.save
-      render json: {status: "ok"}
+      if @todo.save
+        render json: {status: "ok"}
+      end
     end
   end
 
