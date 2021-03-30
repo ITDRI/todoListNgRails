@@ -5,7 +5,7 @@ function requireHTTPS(req, res, next) {
   }
   next();
 }
-const express = require('express');
+const express = require('./ng-app/node_modules/express');
 const app = express();
 const port = 8080
 app.use(requireHTTPS);
