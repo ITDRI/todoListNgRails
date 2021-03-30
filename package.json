@@ -1,7 +1,9 @@
 {
   "name": "testTodos",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "heroku-postbuild": "npm i ng-app && cd ng-app && ng build --prod && node server.js",
+  },
   "engines": {
     "node": "12.18.4",
     "npm": "6.14.6"
