@@ -2,13 +2,15 @@
   "name": "testTodos",
   "private": true,
   "scripts": {
+    "heroku-postbuild": "cd ng-app && npm install",
     "start": "node server.js",
-    "build": "npm run --prefix ./ng-app build"
+    "postinstall": "npm run --prefix ./ng-app build"
   },
   "dependencies": {
     "express": "^4.17.1"
   },
   "engines": {
-    "node": "12.x"
+    "node": "12.x",
+    "npm": "6.4.x"
   }
 }
