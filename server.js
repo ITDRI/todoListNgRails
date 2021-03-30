@@ -5,7 +5,7 @@
 //   }
 //   next();
 // }
-const express = require('ng-app/express');
+const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000
 // app.use(requireHTTPS);
