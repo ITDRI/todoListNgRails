@@ -4,7 +4,7 @@
   "scripts": {
     "heroku-postbuild": "npm install",
     "postinstall": "npm run --prefix ./ng-app build",
-    "start": "node .ng-app/server.js"
+    "start": "node ./ng-app/server.js"
   },
   "engines": {
     "node": "12.x",
