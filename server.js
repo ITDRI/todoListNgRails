@@ -11,7 +11,7 @@ app.use(requireHTTPS);
 
 app.use(express.static('./ng-app/dist/ng-app'));
 
-app.get('/*', function(req, res) {
+app.get('/', function(req, res) {
   res.sendFile('index.html', {root: 'ng-app/dist/ng-app/'}
   );
 });
