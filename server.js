@@ -7,7 +7,6 @@ function requireHTTPS(req, res, next) {
 }
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000
 app.use(requireHTTPS);
 
 app.use(express.static('./ng-app/dist/ng-app'));
@@ -17,4 +16,5 @@ app.get('/*', function(req, res) {
   );
 });
 
-app.listen(port, () => console.log(`serv running http://localhost:${port}`));
+app.listen(process.env.PORT || 3000,
+  () => console.log("Server is running..."));
