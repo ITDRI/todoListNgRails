@@ -3,8 +3,7 @@
   "private": true,
   "scripts": {
     "heroku-postbuild": "npm install",
-    "postinstall": "npm run --prefix ./ng-app build",
-    "start": "node server.js"
+    "start": "npm run --prefix ./ng-app build & node server.js"
   },
   "dependencies": {
     "@angular/animations": "~11.0.3",
