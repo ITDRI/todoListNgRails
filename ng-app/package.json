@@ -2,7 +2,6 @@
   "name": "ng-app",
   "version": "0.0.0",
   "scripts": {
-    "heroku-postbuild": "npm i && ng build --prod && node server.js",
     "start": "node server.js",
     "build": "ng build --prod",
     "test": "ng test",
