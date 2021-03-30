@@ -5,7 +5,7 @@
 //   }
 //   next();
 // }
-const express = require('./ng-app/node_modules/express/index');
+const express = require('./ng-app/node_modules/express/');
 const app = express();
 const port = 3000
 // app.use(requireHTTPS);
