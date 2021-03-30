@@ -1,5 +1,11 @@
 {
   "name": "testTodos",
   "private": true,
-  "dependencies": {}
+  "scripts": {
+    "start": "node server.js",
+    "build": "npm run --prefix ./ng-app build"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
