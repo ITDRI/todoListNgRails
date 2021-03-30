@@ -1,13 +1,5 @@
 {
   "name": "testTodos",
   "private": true,
-  "scripts": {
-    "heroku-postbuild": "npm i ng-app",
-    "postinstall": "npm run --prefix ./ng-app build",
-    "start": "node ./ng-app/server.js"
-  },
-  "engines": {
-    "node": "12.x",
-    "npm": "6.14.6"
-  }
+  "scripts": {}
 }

@@ -8,12 +8,12 @@ function requireHTTPS(req, res, next) {
 const express = require('express');
 const app = express();
 const port = 8080
-app.use(requireHTTPS);
+// app.use(requireHTTPS);
 
-app.use(express.static('./ng-app/dist/ng-app'));
+app.use(express.static('./dist/ng-app'));
 
 app.get('/*', function(req, res) {
-  res.sendFile('index.html', {root: 'ng-app/dist/ng-app/'}
+  res.sendFile('index.html', {root: 'dist/ng-app/'}
   );
 });
 
