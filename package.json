@@ -1,16 +1,21 @@
 {
-  "name": "testTodos",
+  "name": "testtodos",
   "private": true,
   "scripts": {
-    "heroku-postbuild": "cd ng-app && npm install",
-    "start": "node server.js",
-    "postinstall": "npm run --prefix ./ng-app build"
-  },
-  "dependencies": {
-    "express": "^4.17.1"
+    "heroku-postbuild": "cd ng-app && npm install"
   },
   "engines": {
-    "node": "12.x",
-    "npm": "6.4.x"
-  }
+    "node": "12.18.4",
+    "npm": "6.14.6"
+  },
+  "description": "",
+  "version": "1.0.0",
+  "main": "",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
 }
