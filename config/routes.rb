@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # root 'project#index'
   get 'todos' => 'todo#index'
   post 'todo' => 'todo#create'
   get 'projects' => 'project#index'
