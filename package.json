@@ -2,7 +2,7 @@
   "name": "testTodos",
   "private": true,
   "scripts": {
-    "heroku-postbuild": "cd ng-app && npm install",
+    "heroku-postbuild": "npm install",
     "start": "node server.js",
     "postinstall": "npm run --prefix ./ng-app build"
   },
