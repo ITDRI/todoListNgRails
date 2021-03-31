@@ -11,11 +11,13 @@ class ProjectController < ApplicationController
     @todo.update!(todo_params)
   end
   
-  def static
-    send_file Rails.root.join('ng-app/dist/ng-app/', request.original_fullpath)
-  end
+
 
   private def todo_params
     params.permit(:isCompleted)
   end
+
+  # def static
+  #   send_file Rails.root.join('ng-app/dist/ng-app/', request.original_fullpath)
+  # end
 end
