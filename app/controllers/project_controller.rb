@@ -10,13 +10,12 @@ class ProjectController < ApplicationController
     @todo = Todo.find(params[:id])
     @todo.update!(todo_params)
   end
+  
+  def static
+    send_file Rails.root.join('ng-app/dist/ng-app/', request.original_fullpath)
+  end
 
   private def todo_params
     params.permit(:isCompleted)
-  end
-  def angular
-    # send_file "#{RAILS_ROOT}/ng-app/dist/ng-app/index.html", type: 'text/html; charset=utf-8'
-    # @file ="#{Rails.root}/ng-app/dist/ng-app/index.html"
-    # send_file @file, type: 'text/html; charset=utf-8', :disposition => 'inline'
   end
 end
