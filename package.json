@@ -10,14 +10,11 @@
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "",
   "directories": {
     "lib": "lib",
     "test": "test"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+  "license": "ISC"
 }

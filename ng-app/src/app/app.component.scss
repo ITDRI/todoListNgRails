@@ -1,0 +1,28 @@
+mat-toolbar{
+  & .toolbar_title{
+    flex: 1 1 auto;
+    text-align: center;
+  }
+  & .mat-icon {
+    font-size: 30px;
+    line-height: 30px;
+    height: 30px;
+    width: 30px;
+  }
+}
+
+main{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+<div class="project">
+  <div class="project_title">{{ project.title }}</div>
+  <form>
+    <mat-checkbox color="primary" *ngFor="let todo of project.todos"
+                  [checked]="todo.isCompleted"
+                  (change)="markComplete($event.checked, todo.id)">{{todo.text}}
+    </mat-checkbox>
+  </form>
+</div>
