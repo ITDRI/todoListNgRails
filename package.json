@@ -2,8 +2,11 @@
   "name": "testtodos",
   "private": true,
   "scripts": {
-    "heroku-postbuild": "cd ng-app && ng build --prod"
+    "heroku-postbuild": "npm build --workspaces"
   },
+  "workspaces": [
+    "./ng-app/*"
+  ],
   "engines": {
     "node": "12.18.4",
     "npm": "6.14.6"
