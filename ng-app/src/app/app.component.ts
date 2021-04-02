@@ -10,15 +10,19 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
+
   title = 'Задачи';
   projects: Project[] = []
   projectsSub: Subscription
+
   constructor (private projectsService: ProjectsService) { }
+
+  modal = false
 
   ngOnInit() {
     this.projectsSub = this.projectsService.getAll().subscribe(projects => {
       this.projects = projects
-      console.log(this.projects)
+      // console.log(this.projects)
     })
   }
 
@@ -26,5 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
     if (this.projectsSub) this.projectsSub.unsubscribe()
   }
 
-
+  test() {
+    console.log('asd')
+  }
 }

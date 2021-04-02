@@ -10,7 +10,7 @@ import {plainToClass} from 'class-transformer';
 export class ProjectsService {
   constructor (private http: HttpClient) { }
 
-  getAll(): any {
+  getAll(): any {   // Todo type any?
     return this.http.get(`${environment.dbUrl}/projects`)
       .pipe(
         map((response: {[key: string]: any}) => {
@@ -18,6 +18,4 @@ export class ProjectsService {
         })
       )
   }
-
-
 }

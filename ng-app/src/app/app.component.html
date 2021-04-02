@@ -12,7 +12,7 @@
   <mat-toolbar color="primary">
     <span class="toolbar_title">{{title}}</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button>
+    <button mat-icon-button (click)="modal = true">
       <mat-icon>add</mat-icon>
     </button>
   </mat-toolbar>
@@ -27,6 +27,8 @@
     </main>
   </ng-template>
 
+
+  <app-create-todo-modal *ngIf="modal" [projects]="projects" (hideModal)="modal = false"></app-create-todo-modal>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 class ProjectController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token  # Todo auth token?
   
   def get
     @projects= Project.all
@@ -7,12 +7,5 @@ class ProjectController < ApplicationController
     render json: @data
   end
 
-  def patch
-    @todo = Todo.find(params[:todo_id])
-    @todo.update!(todo_patch_params)
-  end
-  
-  private def todo_patch_params
-    params.permit(:isCompleted)
-  end
+
 end

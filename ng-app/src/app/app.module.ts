@@ -11,6 +11,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {HttpClientModule} from '@angular/common/http';
 import {ProjectsComponent} from './components/projects/projects.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {CreateTodoModalComponent} from './components/create-todo-modal/create-todo-modal.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -18,7 +21,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 @NgModule({
   declarations: [
     AppComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    CreateTodoModalComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,9 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatCheckboxModule,
     MatButtonModule,
     HttpClientModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
