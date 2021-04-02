@@ -1,9 +1,4 @@
 class TodoController < ApplicationController
-  skip_before_action :verify_authenticity_token
-  def index
-    render json: Todo.all
-  end
-  
   def create
     if params[:title]
       @project = Project.new(title: params[:title])
@@ -18,7 +13,6 @@ class TodoController < ApplicationController
       end
     end
   end
-
   private def todo_params
     params.require(:todo).permit(:text, :isCompleted, :project_id)
   end

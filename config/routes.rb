@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  get 'todos' => 'todo#index'
-  post 'todo' => 'todo#create'
+  
   get 'projects' => 'project#get'
-  put 'projects/:id/todo/:id' => 'project#update'
+  patch 'projects/:project_id/todo/:todo_id' => 'project#patch'
+  post 'todo' => 'todo#create'
 
-
-  # root 'project#static'
-  # get '*other', to: 'project#static'
 end
+
+
+

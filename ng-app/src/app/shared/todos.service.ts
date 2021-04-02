@@ -8,6 +8,9 @@ import {environment} from './../../environments/environment.prod';
 export class TodosService {
   constructor (private http: HttpClient) { }
 
+  update(todo: Todo): Observable<Todo> {
+    return this.http.patch<Todo>(`${environment.dbUrl}/projects/${todo.project_id}/todo/${todo.id}`, todo)
+  }
   // create(todo: Todo): Observable<Todo> {
   //   return this.http.post(`${environment.dbUrl}/todos.json`, todo)
   // }

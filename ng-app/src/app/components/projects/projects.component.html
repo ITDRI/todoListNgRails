@@ -3,7 +3,7 @@
   <form>
     <mat-checkbox color="primary" *ngFor="let todo of project.todos"
                   [checked]="todo.isCompleted"
-                  (change)="markComplete($event.checked, todo.id)">{{todo.text}}
+                  (change)="update($event.checked, todo )">{{todo.text}}
     </mat-checkbox>
   </form>
 </div>
