@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Project, Projects} from './interfaces';
-import {environment} from '../../environments/environment.prod';
+import {environment} from '../../environments/environment';
 import {plainToClass} from 'class-transformer';
 
 @Injectable({providedIn: 'root'})
