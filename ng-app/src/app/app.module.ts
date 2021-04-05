@@ -14,6 +14,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {CreateTodoModalComponent} from './components/create-todo-modal/create-todo-modal.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -36,7 +37,8 @@ import {MatSelectModule} from '@angular/material/select';
     HttpClientModule,
     MatProgressBarModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

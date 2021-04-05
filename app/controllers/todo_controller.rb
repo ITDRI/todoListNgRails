@@ -1,8 +1,8 @@
 class TodoController < ApplicationController
   skip_before_action :verify_authenticity_token # Todo auth token?
   def create
-    if params[:title]
-      @project = Project.new(title: params[:title])
+    if params[:project_title]
+      @project = Project.new(title: params[:project_title])
       if @project.save
         @todo = Todo.create(text: params[:text], isCompleted:params[:isCompleted], project_id: @project.id)
         @todo.save

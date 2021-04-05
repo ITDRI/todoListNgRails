@@ -1,5 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Project} from './../../shared/interfaces';
+import {Component, EventEmitter, Input, OnDestroy, Output} from '@angular/core';
+import {plainToClass} from 'class-transformer';
+import {Subscription} from 'rxjs';
+import {Project, Todo, Todos} from './../../shared/interfaces';
 import {TodosService} from './../../shared/todos.service';
 
 @Component({
@@ -7,19 +9,20 @@ import {TodosService} from './../../shared/todos.service';
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })
-export class ProjectsComponent implements OnInit {
+export class ProjectsComponent implements OnDestroy {
   @Input()
   project: Project
-
+  updateSub: Subscription
 
   constructor (private TodosService: TodosService) { }
 
-  ngOnInit(): void {
+  update(isCompleted: boolean, todo: Todo) {
+    const updTodo = plainToClass(Todos, todo)
+    updTodo.complete = isCompleted
+    this.updateSub = this.TodosService.update(updTodo).subscribe()
   }
 
-  update(isCompleted, todo) {
-    todo.isCompleted = isCompleted
-    this.TodosService.update(todo).subscribe(res => console.log(res))
-
+  ngOnDestroy() {
+    if (this.updateSub) this.updateSub.unsubscribe()
   }
 }

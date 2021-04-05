@@ -5,26 +5,26 @@
   <form [formGroup]="createTodoform" (ngSubmit)="submit()">
     <mat-form-field>
       <mat-label>Название задачи</mat-label>
-      <input type="email" matInput formControlName="todoTitleFormControl" placeholder="Название задачи...">
-      <mat-error *ngIf="createTodoform.get('todoTitleFormControl').hasError('required')">
+      <input type="email" matInput formControlName="todoTextFormControl" placeholder="Название задачи...">
+      <mat-error *ngIf="createTodoform.get('todoTextFormControl').hasError('required')">
         Пожалуйста введите <strong>название задачи</strong>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Категория</mat-label>
-      <mat-select required formControlName="projectIdFormControl">
+      <mat-select required formControlName="projectIdFormControl" (selectionChange)="addNewCategory()">
         <mat-option>--</mat-option>
-        <mat-option *ngFor="let project of projects" [value]=" project.id">{{project.title}}</mat-option>
-        <mat-option value="new">Создать новую категорию</mat-option>
+        <mat-option *ngFor="let project of projects" [value]="project.id">{{project.title}}</mat-option>
+        <mat-option value="-1">Создать новую категорию</mat-option>
       </mat-select>
       <mat-error *ngIf="createTodoform.get('projectIdFormControl').hasError('required')">
         Необходимо указать название категории для новой задачи
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field *ngIf="createTodoform.get('projectIdFormControl').value == 'new'">
-      <mat-label>Название категории</mat-label>
+    <mat-form-field *ngIf="showAdditionalField">
+      <mat-label>Название новой категории</mat-label>
       <input type="email" matInput formControlName="projectTitleFormControl" placeholder="Название новой категории...">
       <mat-error *ngIf="createTodoform.get('projectTitleFormControl').hasError('required')">
         Пожалуйста введите <strong>название новой категории</strong>
