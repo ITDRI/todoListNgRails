@@ -12,7 +12,8 @@
 
   <app-create-todo-modal *ngIf="modal" [projects]="projects"
                          (onAddNewTodo)="drawProjectList()"
-                         (hideModal)="modal = false">
+                         (hideModal)="modal = false"
+                         (onError)="errorsHandle($event)">
   </app-create-todo-modal>
 
   <mat-toolbar color="primary">
@@ -30,7 +31,8 @@
 
   <main *ngIf="projects.length > 0; else loading">
     <app-projects *ngFor="let project of projects"
-                  [project]="project"></app-projects>
+                  [project]="project"
+                  (onError)="errorsHandle($event)"></app-projects>
 
 
   </main>

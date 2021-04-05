@@ -1,4 +1,4 @@
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Injectable, Output} from '@angular/core';
 import {catchError, map} from 'rxjs/operators';
 import {Projects} from './interfaces';
@@ -18,9 +18,10 @@ export class ProjectsService {
         map((response: {[key: string]: any}) => {
           return plainToClass(Projects, response)
         }),
-        catchError(error => {
-          this.error$.next(error.message)
-          return throwError(error)
+        catchError(err => {
+          console.log(err)
+          this.error$.next(err.message)
+          return throwError(err)
         })
       )
   }

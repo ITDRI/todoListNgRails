@@ -33,7 +33,8 @@
 
     <fieldset>
       <button mat-raised-button (click)=" hideModal.emit()" type="button">Отмена</button>
-      <button mat-raised-button color="primary" type="submit" [disabled]="createTodoform.invalid">OK</button>
+      <button mat-raised-button color="primary" type="submit"
+              [disabled]="createTodoform.invalid || submitted">OK</button>
     </fieldset>
   </form>
 </div>

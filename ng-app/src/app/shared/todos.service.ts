@@ -14,9 +14,9 @@ export class TodosService {
   update(todo: Todo): Observable<Todo> {
     return this.http.patch<Todo>(`${environment.dbUrl}/projects/${todo.project_id}/todo/${todo.id}`, todo)
       .pipe(
-        catchError(error => {
-          this.error$.next(error.message)
-          return throwError(error)
+        catchError(err => {
+          this.error$.next(err.message)
+          return throwError(err)
         }
         )
       )
@@ -25,9 +25,9 @@ export class TodosService {
   create(newTodo: NewTodo): Observable<NewTodo> {
     return this.http.post<NewTodo>(`${environment.dbUrl}/todo`, newTodo)
       .pipe(
-        catchError(error => {
-          this.error$.next(error.message)
-          return throwError(error)
+        catchError(err => {
+          this.error$.next(err.message)
+          return throwError(err)
         }
         )
       )

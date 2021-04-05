@@ -2,7 +2,7 @@ import {ConditionalExpr} from '@angular/compiler';
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {plainToClass} from 'class-transformer';
-import {Subscription} from 'rxjs';
+import {Subject, Subscription} from 'rxjs';
 import {Projects, NewTodo} from './../../shared/interfaces';
 import {TodosService} from './../../shared/todos.service';
 
@@ -16,11 +16,15 @@ export class CreateTodoModalComponent implements OnInit, OnDestroy {
   @Input() projects: Projects[]
   @Output() hideModal = new EventEmitter<void>()
   @Output() onAddNewTodo = new EventEmitter<void>()
+  @Output() onError = new EventEmitter<string>()
   createTodoform: FormGroup
   newTodo: NewTodo
   showAdditionalField: boolean = false
   createSub: Subscription
+  errSub: Subscription
   title = "Новая задача"
+  submitted = false
+
 
   constructor (private todosService: TodosService) { }
 
@@ -29,10 +33,14 @@ export class CreateTodoModalComponent implements OnInit, OnDestroy {
       todoTextFormControl: new FormControl('', Validators.required),
       projectIdFormControl: new FormControl('', Validators.required)
     })
+    this.errSub = this.todosService.error$.subscribe(err => {
+      this.onError.emit(err)
+    })
   }
 
   ngOnDestroy() {
     if (this.createSub) this.createSub.unsubscribe()
+    if (this.errSub) this.errSub.unsubscribe()
   }
 
   addNewCategory(): void {
@@ -49,6 +57,7 @@ export class CreateTodoModalComponent implements OnInit, OnDestroy {
 
   submit(): void {
     if (this.createTodoform.valid) {
+      this.submitted = true
       this.newTodo = plainToClass(NewTodo,
         {
           text: this.createTodoform.value.todoTextFormControl,
@@ -56,6 +65,7 @@ export class CreateTodoModalComponent implements OnInit, OnDestroy {
           project_title: this.createTodoform.value.projectTitleFormControl,
         })
       this.createSub = this.todosService.create(this.newTodo).subscribe(() => {
+        this.submitted = false
         this.hideModal.emit()
         this.onAddNewTodo.emit()
       }, () => this.hideModal.emit()

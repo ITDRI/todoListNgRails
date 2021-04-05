@@ -3,7 +3,6 @@ import 'reflect-metadata';
 import {ProjectsService} from './shared/projects.service';
 import {Project} from './shared/interfaces';
 import {Subscription} from 'rxjs';
-import {TodosService} from './shared/todos.service';
 
 @Component({
   selector: 'app-root',
@@ -15,27 +14,24 @@ export class AppComponent implements OnInit, OnDestroy {
   title = 'Задачи';
   projects: Project[] = []
   projectsSub: Subscription
-  errorsSub: Subscription[] = []
+  errSub: Subscription
   error: string
+  modal = false
 
   constructor (
-    private projectsService: ProjectsService,
-    public todosService: TodosService,
-    public projectService: ProjectsService
+    private projectsService: ProjectsService
   ) { }
-
-  modal = false
 
   ngOnInit(): void {
     this.drawProjectList()
-    this.errorsHandle()
+
+    this.errSub = this.projectsService.error$.subscribe(err => {
+      this.error = err
+    })
   }
 
   ngOnDestroy(): void {
     if (this.projectsSub) this.projectsSub.unsubscribe()
-    if (this.errorsSub.length) {
-      this.errorsSub.forEach(e => e.unsubscribe())
-    }
   }
 
   drawProjectList(): void {
@@ -44,11 +40,7 @@ export class AppComponent implements OnInit, OnDestroy {
     })
   }
 
-  errorsHandle() {
-    [this.todosService.error$,
-    this.projectService.error$].forEach(error$ => {
-      this.errorsSub.push(error$.subscribe(err => this.error = err))
-    }
-    )
+  errorsHandle(error) {
+    this.error = error
   }
 }
