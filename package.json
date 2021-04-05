@@ -2,7 +2,7 @@
   "name": "testtodos",
   "private": true,
   "scripts": {
-    "heroku-postbuild": "ng build --prod"
+    "heroku-postbuild": "npm run build --prod --prefix ng-app"
   },
   "engines": {
     "node": "12.18.4",
