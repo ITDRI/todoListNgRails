@@ -11,7 +11,6 @@
 <body>
 
   <app-create-todo-modal *ngIf="modal" [projects]="projects"
-                         (onAddNewTodo)="drawProjectList()"
                          (hideModal)="modal = false"
                          (onError)="errorsHandle($event)">
   </app-create-todo-modal>
@@ -26,11 +25,12 @@
 
   <mat-card class="error" *ngIf="error">
     <h1>При выполнении запроса произошла ошибка!</h1>
-    <p class="error_text">{{error}}</p>
+    <p class="error_text">{{error.message}}</p>
+    <p class="error_text" *ngIf="error.error.text">{{error.error.text}}</p>
   </mat-card>
 
   <main *ngIf="projects.length > 0; else loading">
-    <app-projects *ngFor="let project of projects"
+    <app-projects *ngFor="let project of projects;  trackBy: projectsTrack"
                   [project]="project"
                   (onError)="errorsHandle($event)"></app-projects>
 

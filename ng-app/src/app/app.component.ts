@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import 'reflect-metadata';
 import {ProjectsService} from './shared/projects.service';
-import {Project} from './shared/interfaces';
+import {Projects} from './shared/interfaces';
 import {Subscription} from 'rxjs';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,10 @@ import {Subscription} from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
 
   title = 'Задачи';
-  projects: Project[] = []
+  projects: Projects[] = []
   projectsSub: Subscription
   errSub: Subscription
-  error: string
+  error: HttpErrorResponse
   modal = false
 
   constructor (
@@ -40,7 +41,11 @@ export class AppComponent implements OnInit, OnDestroy {
     })
   }
 
-  errorsHandle(error) {
+  errorsHandle(error: HttpErrorResponse) {
     this.error = error
+  }
+
+  projectsTrack(_, project: Projects) {
+    return project.id;
   }
 }

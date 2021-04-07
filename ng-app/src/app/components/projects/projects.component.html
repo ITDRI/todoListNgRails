@@ -1,7 +1,7 @@
 <div class="project">
   <div class="project_title">{{ project.title }}</div>
   <form>
-    <mat-checkbox *ngFor="let todo of project.todos"
+    <mat-checkbox *ngFor="let todo of project.todos | sort; trackBy: todosTrack"
                   [checked]="todo.isCompleted"
                   (change)="update($event.checked, todo )"
                   color="primary">{{todo.text}}

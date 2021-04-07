@@ -1,9 +1,8 @@
 import {ConditionalExpr} from '@angular/compiler';
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {plainToClass} from 'class-transformer';
-import {Subject, Subscription} from 'rxjs';
-import {Projects, NewTodo} from './../../shared/interfaces';
+import {Subscription} from 'rxjs';
+import {Projects, NewTodo, Todo} from './../../shared/interfaces';
 import {TodosService} from './../../shared/todos.service';
 
 @Component({
@@ -15,7 +14,6 @@ export class CreateTodoModalComponent implements OnInit, OnDestroy {
 
   @Input() projects: Projects[]
   @Output() hideModal = new EventEmitter<void>()
-  @Output() onAddNewTodo = new EventEmitter<void>()
   @Output() onError = new EventEmitter<string>()
   createTodoform: FormGroup
   newTodo: NewTodo
@@ -58,18 +56,27 @@ export class CreateTodoModalComponent implements OnInit, OnDestroy {
   submit(): void {
     if (this.createTodoform.valid) {
       this.submitted = true
-      this.newTodo = plainToClass(NewTodo,
-        {
-          text: this.createTodoform.value.todoTextFormControl,
-          project_id: this.createTodoform.value.projectIdFormControl,
-          project_title: this.createTodoform.value.projectTitleFormControl,
-        })
-      this.createSub = this.todosService.create(this.newTodo).subscribe(() => {
-        this.submitted = false
+      this.newTodo =
+      {
+        text: this.createTodoform.value.todoTextFormControl,
+        project_id: this.createTodoform.value.projectIdFormControl,
+        project_title: this.createTodoform.value.projectTitleFormControl,
+        isCompleted: false
+      }
+      this.createSub = this.todosService.create(this.newTodo).subscribe((response) => {
+        if (response instanceof Projects) {
+          this.projects.push(response)
+        } else if (response instanceof Todo) {
+          const projId = this.projects.findIndex(proj => proj.id === response.project_id)
+          this.projects[projId].todos.push(response)
+        }
         this.hideModal.emit()
-        this.onAddNewTodo.emit()
       }, () => this.hideModal.emit()
       )
     }
+  }
+
+  todosTrack(_, todo: Todo) {
+    return todo.id
   }
 }

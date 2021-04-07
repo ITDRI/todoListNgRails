@@ -15,6 +15,7 @@ import {CreateTodoModalComponent} from './components/create-todo-modal/create-to
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
+import {SortPipe} from './shared/sort.pipe';
 
 
 
@@ -23,7 +24,8 @@ import {MatCardModule} from '@angular/material/card';
   declarations: [
     AppComponent,
     ProjectsComponent,
-    CreateTodoModalComponent
+    CreateTodoModalComponent,
+    SortPipe
   ],
   imports: [
     BrowserModule,

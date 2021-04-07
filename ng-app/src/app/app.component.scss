@@ -16,13 +16,16 @@ main{
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+
 }
 
 mat-card.error {
   color: red;
 }
 
-
+::ng-deep .mat-checkbox-layout {
+  white-space: normal !important;
+}
 
 
 

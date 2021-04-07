@@ -1,4 +1,4 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Injectable, Output} from '@angular/core';
 import {catchError, map} from 'rxjs/operators';
 import {Projects} from './interfaces';
@@ -9,7 +9,7 @@ import {Observable, Subject, throwError} from 'rxjs';
 @Injectable({providedIn: 'root'})
 export class ProjectsService {
 
-  @Output() error$: Subject<string> = new Subject()
+  @Output() error$: Subject<HttpErrorResponse> = new Subject()
   constructor (private http: HttpClient) { }
 
   getAll(): Observable<any> {
@@ -19,10 +19,13 @@ export class ProjectsService {
           return plainToClass(Projects, response)
         }),
         catchError(err => {
-          console.log(err)
-          this.error$.next(err.message)
+          this.error$.next(err)
           return throwError(err)
         })
       )
+  }
+
+  projectsTrack(_, item) {
+    return item.id;
   }
 }
